@@ -1,10 +1,12 @@
 from collections import namedtuple
-from gamestate import GameState
-from player import Player
-from infected import Infected
+
 import pygame
 import pygame_menu
+
 import menus
+from gamestate import GameState
+from infected import Infected
+from player import Player
 
 #alex was here asdf
 
@@ -56,7 +58,7 @@ class CovidBlaster:
     # Initializes the audio engine
     def initialize_audio(self):
         self.audio_engine = pygame_menu.sound.Sound()
-        self.audio_engine.set_sound(pygame_menu.sound.SOUND_TYPE_WIDGET_SELECTION, './assets/sfx/confirm.wav')
+        # self.audio_engine.set_sound(pygame_menu.sound.SOUND_TYPE_WIDGET_SELECTION, '\assets\sfx\confirm.wav')
         self.current_menu.set_sound(self.audio_engine)
 
     # Sets the current menu to the main menu
@@ -80,14 +82,14 @@ class CovidBlaster:
 
         for score in self.high_scores:
             name, value = score.strip().split(':')
-            self.current_menu.add_label(f'{name:>30}{value:>30}', align=pygame_menu.locals.ALIGN_LEFT)
+            self.current_menu.add.label(f'{name:>30}{value:>30}', align=pygame_menu.locals.ALIGN_LEFT)
 
-        self.current_menu.add_button('BACK', self.set_main_menu)
+        self.current_menu.add.button('BACK', self.set_main_menu)
         self.current_menu.enable()
 
     # Gets the high scores from the text file and stores it in a list
     def get_high_scores(self):
-        with open('high_scores.txt') as f:
+        with open('GameData\high_scores.txt') as f:
             self.high_scores = f.readlines()
 
     # Sets the current menu to the settings menu
